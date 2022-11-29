@@ -4,26 +4,22 @@
     let poster = parent.dataset.youtubePoster;
     parent.style.backgroundImage = `url('${poster}')`;
     parent.style.cursor = 'pointer';
-    let dc = document.createElement;
-    let dt = document.createTextNode;
-    let notice = dc('div');
+    let notice = document.createElement('div');
     notice.classList.add('youtube-embed-notice');
-    let na = notice.appendChild;
-    na(dt('For your privacy, this youtube video was not automatically loaded.'));
-    na(dc('br'));
-    na(dt('Click this area to load an embedded youtube video.'));
+    notice.appendChild(document.createTextNode('For your privacy, this youtube video was not automatically loaded.'));
+    notice.appendChild(document.createElement('br'));
+    notice.appendChild(document.createTextNode('Click this area to load an embedded youtube video.'));
     parent.replaceChildren(notice);
     parent.addEventListener('click', function() {
-      let embed = dc('iframe');
+      let embed = document.createElement('iframe');
       embed.classList.add('youtube-iframe');
-      let es = embed.setAttribute;
-      es('width', "100%");
-      es('height', "100%");
-      es('src', `https://www.youtube-nocookie.com/embed/${id}`);
-      es('title', 'Youtube')
-      es('frameborder', '0');
-      es('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      es('allowfullscreen', '');
+      embed.setAttribute('width', "100%");
+      embed.setAttribute('height', "100%");
+      embed.setAttribute('src', `https://www.youtube-nocookie.com/embed/${id}`);
+      embed.setAttribute('title', 'Youtube')
+      embed.setAttribute('frameborder', '0');
+      embed.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      embed.setAttribute('allowfullscreen', '');
       parent.replaceChildren(embed);
       delete parent.style.cursor;
     });

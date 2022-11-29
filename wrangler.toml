@@ -1,0 +1,9 @@
+name = "js-cdyn-dev"
+main = "src/index.ts"
+compatibility_date = "2022-11-29"
+routes = [
+  { pattern = "js.cdyn.dev", custom_domain = true, zone_name = "cdyn.dev"}
+]
+
+[site]
+bucket = "assets"

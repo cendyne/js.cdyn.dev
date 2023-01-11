@@ -7,3 +7,7 @@ for (let element of document.querySelectorAll('[data-ratio]')) {
   let height = element.dataset['height'];
   element.style.aspectRatio = `${width} / ${height}`;
 }
+for (let element of document.querySelectorAll('[data-set-width]')) {
+  let width = element.dataset['width'];
+  element.style.width = `${width}px`;
+}

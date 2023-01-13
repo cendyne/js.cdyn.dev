@@ -1,14 +1,26 @@
-function debounce(func, delay) {
-  let debounceTimer
-  return function() {
-    const context = this
-    const args = arguments
-    clearTimeout(debounceTimer)
-    debounceTimer = setTimeout(() => func.apply(context, args), delay)
-  }
-}
-
 (function(){
+  function debounce(func, delay) {
+    let debounceTimer;
+    let tailing = false;
+    return function() {
+      const context = this
+      const args = arguments
+
+      if (!debounceTimer) {
+        func.apply(context, args);
+        tailing = false;
+      } else {
+        clearTimeout(debounceTimer);
+        trailing = true;
+      }
+      debounceTimer = setTimeout(() => {
+        if (tailing) {
+          func.apply(context, args);
+          debounceTimer = null;
+        }
+      }, delay);
+    }
+  }
   const iframeMap = {}
   function iframeLoaded(event) {
     const element = event.target;

@@ -1,6 +1,12 @@
-for (let element of document.querySelectorAll('[data-background]')) {
+for (let element of document.querySelectorAll('[data-background],[data-background-color]')) {
   let background = element.dataset['background'];
-  element.style.backgroundImage = `url('${background}')`;
+  let color = element.dataset['backgroundColor'];
+  if (background) {
+    element.style.backgroundImage = `url('${background}')`;
+  }
+  if (color) {
+    element.style.backgroundColor = color;
+  }
 }
 for (let element of document.querySelectorAll('[data-ratio]')) {
   let width = element.dataset['width'];

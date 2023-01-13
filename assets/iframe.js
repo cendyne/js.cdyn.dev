@@ -28,7 +28,7 @@
     if (!id) {
       return;
     }
-    element.contentWindow.postMessage(JSON.stringify({type: 'loaded', id}), '*');
+    element.contentWindow.postMessage(JSON.stringify({type: 'loaded', id, buffered: false}), '*');
   }
 
   for (let element of document.querySelectorAll('.inline-iframe')) {

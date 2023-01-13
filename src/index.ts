@@ -76,11 +76,18 @@ app.get('/min/:paths', async (c) => {
 	return await app.fetch(new Request(url.toString()), c.env, c.executionCtx);
 });
 app.use('/*', async (c, next) => {
-	let {host, pathname} = new URL(c.req.url);
+	let {host, pathname, searchParams} = new URL(c.req.url);
+	let nocache = searchParams.get('nocache');
+	let resetCache = searchParams.get('reset-cache');
 	let cachedRequest = new Request(`https://${host}${pathname}`);
-	let cachedResponse = await caches.default.match(cachedRequest);
-	if (cachedResponse) {
-		return cachedResponse;
+	if (resetCache != undefined) {
+		await caches.default.delete(cachedRequest);
+	}
+	if (!nocache) {
+		let cachedResponse = await caches.default.match(cachedRequest);
+		if (cachedResponse) {
+			return cachedResponse;
+		}
 	}
 	const response = await staticMiddleware(c, next);
 	if (response) {

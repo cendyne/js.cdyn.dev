@@ -5,7 +5,7 @@
       latestEvent.source.postMessage(JSON.stringify({
         type: 'height',
         id: iframeId,
-        height: rect.height + rect.top * 2
+        height: Math.ceil(rect.height + rect.top * 2)
       }), latestEvent.origin)
     }
   };
@@ -24,28 +24,35 @@
     update(calcRect())
   });
 
-  window.addEventListener('load', () => {
-    observer.observe(document.body, {subtree: true, attributes: true});
-    window.addEventListener('message', (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        const type = data.type;
-        if (!type) {
-          return;
-        }
-        latestEvent = event;
-        iframeId = data.id;
-        switch (type) {
-          case 'loaded':
-          case 'resized': {
-            update(calcRect());
-            break;
-          }
-        }
-      } catch (e) {
-        console.error(e);
+  observer.observe(document.body, {subtree: true, attributes: true});
+  window.addEventListener('message', (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      const type = data.type;
+      if (!type) {
+        return;
       }
+      latestEvent = event;
+      iframeId = data.id;
+      if (type == 'loaded' || type == 'resized') {
+        window.requestAnimationFrame(()=>{
+          update(calcRect());
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  let loadingInterval = setInterval(() => {
+    update(calcRect());
+  }, 100);
+  document.addEventListener("readystatechange", (event) => {
+    window.requestAnimationFrame(()=>{
+      update(calcRect());
     });
-  })
+    if (event.target.readyState === "complete") {
+      clearInterval(loadingInterval);
+    }
+  });
 
 })();

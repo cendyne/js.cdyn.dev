@@ -34,10 +34,22 @@
       }
       latestEvent = event;
       iframeId = data.id;
-      if (type == 'loaded' || type == 'resized') {
+      if (type == 'loaded' || type == 'resized' || type == 'intersection') {
         window.requestAnimationFrame(()=>{
           update(calcRect());
         });
+      }
+      if (type == 'intersection') {
+        let counter = 0;
+        let interval;
+        // Watch out for lazy loading for the next few seconds
+        interval = setInterval(() => {
+          update(calcRect())
+          counter++;
+          if (counter > 20) {
+            clearInterval(interval);
+          }
+        }, 200);
       }
     } catch (e) {
       console.error(e);

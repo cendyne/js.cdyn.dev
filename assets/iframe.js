@@ -28,10 +28,27 @@
     if (!id) {
       return;
     }
-    element.contentWindow.postMessage(JSON.stringify({type: 'loaded', id, buffered: false}), '*');
+    element.contentWindow.postMessage(JSON.stringify({type: 'loaded', id}), '*');
   }
+  function iframeIntersection(changes) {
+    for (let change of changes) {
+      const element = change.target;
+      id = element.dataset['iframeId'];
+      if (!id) {
+        return;
+      }
+      let {isIntersecting, intersectionRatio} = change;
+      element.contentWindow.postMessage(JSON.stringify({type: 'intersection', id, isIntersecting, intersectionRatio}), '*');
+    }
+  }
+  let intersectionOptions = {
+    root: document,
+    threshold: [0, 0.1, 0.5, 0.8, 1]
+  };
 
-  for (let element of document.querySelectorAll('.inline-iframe')) {
+  let observer = new IntersectionObserver(iframeIntersection, intersectionOptions);
+
+  for (let element of document.querySelectorAll('[data-resizing-iframe]')) {
     const id = `iframe-${crypto.randomUUID()}`;
     if (!element.id) {
       element.id = id;
@@ -39,10 +56,11 @@
     element.dataset['iframeId'] = id;
     iframeMap[id] = element.id;
     element.addEventListener('load', iframeLoaded);
+    observer.observe(element);
   }
 
   const resizeDebounced = debounce(() => {
-    for (let element of document.querySelectorAll('.inline-iframe')) {
+    for (let element of document.querySelectorAll('[data-resizing-iframe]')) {
       id = element.dataset['iframeId']
       if (!id) {
         return;

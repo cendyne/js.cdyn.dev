@@ -35,6 +35,8 @@ app.get('/combo', async (c) => {
 		let cachedRequest = new Request(`https://${host}/combo/${hash}`);
 		let cachedResponse = await caches.default.match(cachedRequest);
 		if (cachedResponse) {
+			cachedResponse = new Response(cachedResponse.body, {...cachedResponse});
+			cachedResponse.headers.set('content-type', 'application/javascript');
 			return cachedResponse;
 		}
 
@@ -51,18 +53,22 @@ app.get('/combo', async (c) => {
 			})());
 		}
 		for (let promise of promises) {
-			let text = await promise;;
+			let text = await promise;
 			result.push(text);
 		}
-		let response = c.text(result.join('\n'), 200, {
-			'content-type': 'application/javascript',
-			'cache-control': 'max-age=604800'
+		let response = new Response(result.join(';'), {
+			headers: new Headers([
+				['cache-control', 'public, max-age 604800'],
+				['content-type', 'application/javascript']
+			])
 		});
 		c.executionCtx.waitUntil(caches.default.put(cachedRequest, response.clone()));
 		return response;
 	} else {
-		return c.text('// Add "p" parameters', 200, {
-			'content-type': 'application/javascript'
+		return new Response('// Add "p" parameters', {
+			headers: new Headers([
+				['content-type', 'application/javascript']
+			])
 		});
 	}
 });

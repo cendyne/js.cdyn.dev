@@ -75,6 +75,9 @@
 
   window.addEventListener('message', function (event) {
     try {
+      if (event.data == '') {
+        return;
+      }
       let data = JSON.parse(event.data);
       let synthId = data.id;
       if (!synthId) {

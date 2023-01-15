@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Create version"
-        working-directory: './src'
+        working-directory: 'src'
         run: 'bash ../.github/version.sh'
       - name: Deploy Production
         uses: cloudflare/wrangler-action@2.0.0

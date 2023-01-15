@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/serve-static.module'
+import build from './build.json'
 
 interface Env {
 	__STATIC_CONTENT: KVNamespace
@@ -31,7 +32,11 @@ app.get('/combo', async (c) => {
 	let paths = c.req.queries('p');
 	let promises = [];
 	if (paths) {
-		let hash = (await sha256('combo:' + paths.length + '\n' + paths.join('\n'))).slice(0, 16);
+		let hash = (await sha256(
+			build.commit +
+			'\ncombo:' + paths.length + '\n' +
+			paths.join('\n')
+			)).slice(0, 16);
 		let cachedRequest = new Request(`https://${host}/combo/${hash}`);
 		let cachedResponse = await caches.default.match(cachedRequest);
 		if (cachedResponse) {
@@ -85,7 +90,8 @@ app.use('/*', async (c, next) => {
 	let {host, pathname, searchParams} = new URL(c.req.url);
 	let nocache = searchParams.get('nocache');
 	let resetCache = searchParams.get('reset-cache');
-	let cachedRequest = new Request(`https://${host}${pathname}`);
+
+	let cachedRequest = new Request(`https://${host}/${build.commit}${pathname}`);
 	if (resetCache != undefined) {
 		await caches.default.delete(cachedRequest);
 	}

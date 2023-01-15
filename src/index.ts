@@ -26,6 +26,7 @@ async function sha256(text: string): Promise<string> {
 const app = new Hono<HonoEnv>()
 const staticMiddleware = serveStatic({root: './'});
 app.get('/', (c) => c.text('This domain hosts a few custom js files for my projects'))
+app.get('/version', (c) => c.json(build));
 app.get('/combo', async (c) => {
 	let result = [];
 	let {host} = new URL(c.req.url);

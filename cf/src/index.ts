@@ -81,6 +81,9 @@ app.get('/combo', async (c) => {
 					return await response.text();
 				} else {
 					console.log(`${path} => ${response.status}`)
+					if (path.endsWith('.css')) {
+						return `/* Could not load ${path.replaceAll(/[^a-zA-Z0-9\.\-\/]/g,'')}*/\n`
+					}
 					return `// Could not load "${path.replaceAll(/[^a-zA-Z0-9\.\-\/]/g,'')}"\n`
 				}
 			})());

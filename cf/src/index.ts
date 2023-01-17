@@ -26,6 +26,7 @@ async function sha256(text: string): Promise<string> {
 const app = new Hono<HonoEnv>()
 const staticMiddleware = serveStatic({root: './'});
 app.get('/', (c) => c.text('This domain hosts a few custom js files for my projects'))
+app.get('/favicon.ico', (c) => c.text('', 404))
 app.get('/version', (c) => c.json(build));
 app.get('/combo', async (c) => {
 	let result = [];
@@ -41,12 +42,38 @@ app.get('/combo', async (c) => {
 		let cachedRequest = new Request(`https://${host}/combo/${hash}`);
 		let cachedResponse = await caches.default.match(cachedRequest);
 		if (cachedResponse) {
+			let oldResponse = cachedResponse;
 			cachedResponse = new Response(cachedResponse.body, {...cachedResponse});
-			cachedResponse.headers.set('content-type', 'application/javascript');
+			for (let [k,v] of oldResponse.headers.entries()) {
+				// manually copy headers? For some reason it is being dropped
+				cachedResponse.headers.append(k, v);
+			}
 			return cachedResponse;
 		}
 
+		let type : 'js' | 'css' | null = null;
+		let err = false;
 		for (let path of paths) {
+			if (path.endsWith('.js')) {
+				if (type == null || type == 'js') {
+					type = 'js';
+				} else {
+					err = true;
+				}
+			} else if (path.endsWith('.css')) {
+				if (type == null || type == 'css') {
+					type = 'css';
+				} else {
+					err = true;
+				}
+			} else {
+				err = true;
+			}
+			if (err) {
+				return new Response('Unsupported content type or combination', {
+					status: 400
+				})
+			}
 			let request = new Request(`https://${host}/${path}`);
 			promises.push((async function() {
 				const response = await app.fetch(request, c.env, c.executionCtx);
@@ -62,12 +89,20 @@ app.get('/combo', async (c) => {
 			let text = await promise;
 			result.push(text);
 		}
-		let response = new Response(result.join(';'), {
+		let contentType = 'text/plain';
+		if (type == 'js') {
+			contentType = 'application/javascript';
+		} else if (type == 'css') {
+			contentType = 'text/css';
+		}
+		let response = new Response(result.join(''), {
 			headers: new Headers([
 				['cache-control', 'public, max-age 604800'],
-				['content-type', 'application/javascript']
+				['content-type', contentType]
 			])
 		});
+		response.headers.set('cache-control', 'public, max-age 604800');
+		response.headers.set('content-type', contentType);
 		c.executionCtx.waitUntil(caches.default.put(cachedRequest, response.clone()));
 		return response;
 	} else {

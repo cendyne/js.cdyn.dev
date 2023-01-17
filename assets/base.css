@@ -1,0 +1,284 @@
+body {
+  font-family: 'DejaVu Sans', Verdana, Georgia, serif;
+  font-size: 11pt;
+  margin: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  overflow-x: hidden;
+  word-break: break-word;
+  --cendyne-max-width: 45em;
+}
+
+@media screen {
+  body {
+    --cendyne-hide-dark: #2e1e17;
+    --cendyne-hide: #3f2e26;
+    --cendyne-hide-lighter: #755048;
+    --cendyne-hide-light: #875950;
+    --cendyne-belly: #f6f3ed;
+    --cendyne-pattern: #f7b2a9;
+    --cendyne-pattern-light: #f8b3aa;
+    --cendyne-trim: #deb836;
+    --cendyne-eyes: #4cabc7;
+    --cendyne-eyes-light: #66D9EF;
+    --ignorable-color: #8C8C8C;
+    --cendyne-hide-half: rgba(46, 30, 23, 0.8);
+    background: var(--cendyne-hide);
+    color: var(--cendyne-belly);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--cendyne-hide-dark);
+  }
+}
+
+@media print {
+  body {
+    --cendyne-hide-dark: black;
+    --cendyne-hide: black;
+    --cendyne-hide-lighter: black;
+    --cendyne-hide-light: black;
+    --cendyne-belly: black;
+    --cendyne-pattern: black;
+    --cendyne-pattern-light: black;
+    --cendyne-trim: black;
+    --cendyne-eyes: black;
+    --cendyne-eyes-light: black;
+    --cendyne-hide-half: black;
+    --ignorable-color: #8C8C8C;
+  }
+
+  video::-webkit-media-controls {
+    display: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  border-bottom: 0.125em var(--cendyne-trim) solid;
+}
+
+img {
+  border: 0;
+}
+
+a,
+a:visited {
+  color: var(--cendyne-pattern);
+  text-decoration: underline;
+}
+
+h2 a,
+h2 a:visited,
+h3 a,
+h3 a:visited,
+h4 a,
+h4 a:visited,
+h5 a,
+h5 a:visited {
+  color: var(--cendyne-trim);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--cendyne-trim);
+  margin-bottom: 2pt;
+  margin-top: 17pt;
+}
+
+h2 {
+  font-size: 19pt;
+}
+
+h3 {
+  font-size: 15pt;
+}
+
+@media print {
+  a,
+  a:visited {
+    color: blue;
+  }
+  blockquote {
+    border-left: 0.5em solid var(--ignorable-color);
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border: 0;
+  width: 100%;
+}
+
+td {
+  border: 0;
+  padding: 0;
+}
+
+header {
+  margin-bottom: 1em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+footer,
+header {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+footer {
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  border-top: 0.125em var(--cendyne-trim) solid;
+}
+
+p,li, footer {
+  line-height: 16pt;
+}
+
+pre {
+  line-height: 14pt;
+  padding-left: 1em;
+  border: 1px solid var(--cendyne-hide-light);
+}
+
+blockquote {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-left: 0.5em;
+  border-left: 0.5em solid var(--cendyne-hide-light);
+  position: relative;
+}
+
+ul,
+ol {
+  padding-inline-start: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+p,
+iframe,
+blockquote {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+td,
+th {
+  padding: 5px;
+}
+
+td {
+  border-top: 1px solid var(--cendyne-hide-light);
+}
+
+th {
+  color: var(--cendyne-trim);
+}
+
+th {
+  text-align: left;
+}
+
+img,
+video {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+video {
+  display: block;
+  margin: auto;
+}
+code {
+  font-family: 'DejaVu Sans Mono';
+  word-break: break-word;
+}
+
+p:last-child,
+iframe:last-child,
+ul:last-child,
+ol:last-child,
+blockquote:last-child {
+  margin-bottom: 0;
+}
+
+p:first-child,
+iframe:first-child,
+ul:first-child,
+ol:first-child,
+blockquote:first-child {
+  margin-top: 0;
+}
+
+* ol {
+  list-style-type: decimal;
+}
+
+* ol>li>ol {
+  list-style-type: lower-alpha;
+}
+
+* ol>li>ol>li>ol {
+  list-style-type: lower-roman;
+}
+
+
+@media screen and (min-width: 43em) {
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+@media screen and (max-width: 49em) {
+  *>ul,
+  *>ol {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 1em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}
+
+@media screen and (min-width: 49.01em) {
+  *>ul,
+  *>ol {
+    padding-inline-start: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  * blockquote {
+    margin-inline-start: -1em;
+  }
+}

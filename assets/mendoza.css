@@ -1,0 +1,114 @@
+
+.mendoza-codeblock {
+  overflow-x: scroll;
+  white-space: pre-wrap;
+  line-height: 1.2;
+  border-radius: 5px;
+  padding: 10px;
+  background: var(--cendyne-hide-dark);
+}
+
+.mendoza-codeblock code {
+  font-size: 6pt;
+  line-height: normal;
+}
+.mendoza-center {
+  text-align: center;
+}
+
+.mdzsyn-comment {
+  color: var(--ignorable-color);
+}
+
+.mdzsyn-operator {
+  color: var(--cendyne-hide-lighter);
+}
+
+.mdzsyn-number {
+  color: var(--cendyne-eyes);
+}
+
+.mdzsyn-keyword {
+  color: var(--cendyne-trim);
+  font-weight: bold;
+}
+
+.mdzsyn-string {
+  color: var(--cendyne-belly);
+}
+
+.mdzsyn-identifier {
+  color: var(--cendyne-eyes);
+}
+
+.mdzsyn-symbol {
+  color: var(--cendyne-eyes);
+}
+
+.mdzsyn-coresym {
+  color: var(--cendyne-trim);
+  font-weight: bold;
+}
+
+.mdzsyn-constant {
+  color: var(--cendyne-eyes-light);
+}
+
+.mdzsyn-character {
+  color: var(--cendyne-pattern-light);
+}
+
+.mdzsyn-type {
+  color: var(--cendyne-pattern-light);
+}
+
+.mdzsyn-line {
+  color: var(--ignorable-color);
+}
+
+.mendoza-codeblock:last-child {
+  margin-bottom: 0;
+}
+
+.mendoza-codeblock:first-child {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 33em) {
+  .mendoza-codeblock code {
+    font-size: 8pt;
+  }
+
+  .smaller-text .mendoza-codeblock code {
+    font-size: 6pt;
+  }
+}
+
+@media screen and (min-width: 43em) {
+  .mendoza-codeblock code {
+    font-size: 11pt;
+    line-height: 1.2;
+  }
+
+  .smaller-text .mendoza-codeblock code {
+    font-size: 8pt;
+  }
+
+  .mendoza-codeblock {
+    overflow-x: unset;
+  }
+}
+@media screen and (min-width: 49.01em) {
+  .mendoza-codeblock {
+    white-space: pre-line;
+  }
+}
+@media print {
+  .mendoza-codeblock code {
+    font-size: 11pt;
+    line-height: 1.2;
+  }
+  .mendoza-codeblock {
+    background: #CCCCCC;
+  }
+}

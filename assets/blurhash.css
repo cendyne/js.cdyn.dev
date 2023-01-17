@@ -1,0 +1,13 @@
+
+.blurhash-parent,
+.blurhash-actual-image {
+  position: relative;
+}
+
+.blurhash-image {
+  position: absolute;
+}
+
+.blurhash-unloaded .blurhash-actual-image {
+  opacity: 0;
+}

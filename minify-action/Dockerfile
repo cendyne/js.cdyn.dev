@@ -3,4 +3,4 @@ COPY index.mjs package.json package-lock.json /app/
 WORKDIR /app/
 RUN npm i
 
-ENTRYPOINT ["node", "index.mjs"]
+ENTRYPOINT ["node", "/app/index.mjs"]

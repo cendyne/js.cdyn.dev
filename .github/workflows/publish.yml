@@ -5,9 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Minify
+        uses: ./minify-action
+        with:
+          directory: 'assets'
       - name: "Create version"
-        working-directory: 'src'
-        run: 'bash ../.github/version.sh'
+        working-directory: 'cf/src'
+        run: 'bash ../../.github/version.sh'
       - name: Deploy Production
         uses: cloudflare/wrangler-action@2.0.0
         with:
@@ -15,3 +19,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: publish
+          workingDirectory: cf

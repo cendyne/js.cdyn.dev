@@ -6,4 +6,4 @@ routes = [
 ]
 
 [site]
-bucket = "assets"
+bucket = "../assets"

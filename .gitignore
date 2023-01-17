@@ -1,1 +1,4 @@
 node_modules
+scratch
+**/*.min.js
+**/*.min.css

@@ -207,8 +207,8 @@
         loaded = true;
         // Remove temporary styling.
         if (addStyle) {
-          delete img.style.height;
-          delete img.style.width;
+          img.style.height = null;
+          img.style.width = null;
         }
       })
       requestAnimationFrame(() => {

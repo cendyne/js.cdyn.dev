@@ -202,6 +202,8 @@
       cloned.addEventListener('load', () => {
         img.replaceWith(cloned);
         loaded = true;
+        delete img.style.height;
+        delete img.style.width;
       })
       requestAnimationFrame(() => {
         if (loaded || img.complete) {

@@ -167,7 +167,6 @@
   let observer = new IntersectionObserver((entries) => {
     for (let entry of entries) {
       if (entry.isIntersecting && entry.target.cloned) {
-        console.log(entry)
         entry.target.cloned.loading = 'eager';
         observer.unobserve(entry.target);
       }

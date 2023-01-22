@@ -196,12 +196,24 @@
       if (img.complete) {
         continue;
       }
+      var loaded = false;
+      var blurhashApplied = false;
+      img.addEventListener('load', () => {
+        if (!blurhashApplied) {
+          loaded = true;
+          // Remove temporary styling.
+          if (addStyle) {
+            img.style.height = null;
+            img.style.width = null;
+          }
+        }
+      })
       let cloned = img.cloneNode();
       img.cloned = cloned;
       if (img.loading == 'lazy') {
         observer.observe(img);
       }
-      var loaded = false;
+
       cloned.addEventListener('load', () => {
         img.replaceWith(cloned);
         loaded = true;
@@ -233,6 +245,7 @@
           }
           const objectUrl = URL.createObjectURL(blob);
           img.src = objectUrl;
+          blurhashApplied = true;
 
           var listener = () => {
             URL.revokeObjectURL(objectUrl);

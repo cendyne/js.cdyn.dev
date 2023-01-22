@@ -198,13 +198,13 @@
       }
       var loaded = false;
       var blurhashApplied = false;
-      img.addEventListener('load', () => {
+      img.addEventListener('load', (event) => {
         if (!blurhashApplied) {
           loaded = true;
           // Remove temporary styling.
           if (addStyle) {
-            img.style.height = null;
-            img.style.width = null;
+            event.target.style.height = null;
+            event.target.style.width = null;
           }
         }
       })
@@ -214,13 +214,13 @@
         observer.observe(img);
       }
 
-      cloned.addEventListener('load', () => {
+      cloned.addEventListener('load', (event) => {
         img.replaceWith(cloned);
         loaded = true;
         // Remove temporary styling.
         if (addStyle) {
-          img.style.height = null;
-          img.style.width = null;
+          event.target.style.height = null;
+          event.target.style.width = null;
         }
       })
       requestAnimationFrame(() => {

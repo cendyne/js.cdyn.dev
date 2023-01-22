@@ -188,7 +188,7 @@
         height = Number.parseInt(sHeight);
       }
       const w = Math.min(width, rect.width);
-      let addStyle = !img.dataset['noStyle'];
+      let addStyle = img.dataset['noStyle'] === undefined;
       if (addStyle) {
         img.style.height = `${height / (width / w)}px`
         img.style.width = `${w}px`;

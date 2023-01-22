@@ -188,8 +188,8 @@
         height = Number.parseInt(sHeight);
       }
       const w = Math.min(width, rect.width);
-      img.height = height / (width / w)
-      img.width = w;
+      img.style.height = `${height / (width / w)}px`
+      img.style.width = `${w}px`;
       if (img.complete) {
         continue;
       }

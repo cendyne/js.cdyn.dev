@@ -227,18 +227,23 @@
         if (loaded || img.complete) {
           return;
         }
-        const blurhashImgData = blurhash.decode(hash, 64, 64);
+        let dim = 64;
+        if ('ontouchstart' in window) {
+          // Mobile devices have less CPU resources
+          dim = 16;
+        }
+        const blurhashImgData = blurhash.decode(hash, dim, dim);
         if (blurhashImgData.length <= 0) {
           return;
         }
         const sourceCanvas = document.createElement("canvas");
         let ctx = sourceCanvas.getContext("2d");
 
-        sourceCanvas.width = 64;
-        sourceCanvas.height = 64;
-        ctx.width = 64;
-        ctx.height = 64;
-        ctx.putImageData(new ImageData(blurhashImgData, 64, 64), 0, 0);
+        sourceCanvas.width = dim;
+        sourceCanvas.height = dim;
+        ctx.width = dim;
+        ctx.height = dim;
+        ctx.putImageData(new ImageData(blurhashImgData, dim, dim), 0, 0);
         sourceCanvas.toBlob(blob => {
           if (loaded || img.complete) {
             return;

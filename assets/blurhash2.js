@@ -188,8 +188,11 @@
         height = Number.parseInt(sHeight);
       }
       const w = Math.min(width, rect.width);
-      img.style.height = `${height / (width / w)}px`
-      img.style.width = `${w}px`;
+      let addStyle = !img.dataset['noStyle'];
+      if (addStyle) {
+        img.style.height = `${height / (width / w)}px`
+        img.style.width = `${w}px`;
+      }
       if (img.complete) {
         continue;
       }
@@ -202,8 +205,11 @@
       cloned.addEventListener('load', () => {
         img.replaceWith(cloned);
         loaded = true;
-        delete img.style.height;
-        delete img.style.width;
+        // Remove temporary styling.
+        if (addStyle) {
+          delete img.style.height;
+          delete img.style.width;
+        }
       })
       requestAnimationFrame(() => {
         if (loaded || img.complete) {

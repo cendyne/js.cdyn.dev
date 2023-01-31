@@ -1,0 +1,27 @@
+@media screen {
+  body.draft {
+    --evangelion-black: #241e20;
+    --evangelion-white: #fdfdfd;
+    --evangelion-red: #e41e37;
+    background: var(--evangelion-black);
+    --cendyne-trim: var(--evangelion-red);
+    --cendyne-belly: var(--evangelion-white);
+    --cendyne-eyes: #5effff;
+    --cendyne-eyes-light: #aaffff;
+    --cendyne-pattern: #d7a926;
+    --cendyne-pattern-light: #dfe026;
+    --cendyne-hide-dark: #1a1416;
+    --cendyne-hide: var(--evangelion-black);
+    --cendyne-hide-light: #312a2c;
+    background-image: url('/assets/draft/bg.svg');
+    background-repeat: repeat;
+  }
+  .draft #body {
+      background: rgba(36,30,32,0.98);
+      padding-left: 2em;
+      padding-right: 2em;
+  }
+  .draft blockquote {
+      --cendyne-hide-light: var(--evangelion-red);
+  }
+}

@@ -98,11 +98,6 @@
     overflow-x: unset;
   }
 }
-@media screen and (min-width: 49.01em) {
-  .mendoza-codeblock {
-    white-space: pre-line;
-  }
-}
 @media print {
   .mendoza-codeblock code {
     font-size: 11pt;

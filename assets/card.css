@@ -71,14 +71,19 @@
   font-weight: bold;
 }
 
+.card-channel-link {
+  min-width: 20em;
+  display: none;
+}
+
 @media screen and (max-width: 28em) {
   .card-header-bg {
     flex-wrap: wrap;
   }
 }
-@media screen and (max-width: 38em) {
+@media screen and (min-width: 38em) {
   .card-channel-link {
-    display: none;
+    display: inherit;
   }
 }
 

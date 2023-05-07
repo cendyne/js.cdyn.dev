@@ -18,6 +18,7 @@
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
+  max-height: 10em;
 }
 
 .card-header {
@@ -73,6 +74,11 @@
 @media screen and (max-width: 28em) {
   .card-header-bg {
     flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 38em) {
+  .card-channel-link {
+    display: none;
   }
 }
 

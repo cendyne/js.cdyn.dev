@@ -70,6 +70,12 @@
   font-weight: bold;
 }
 
+@media screen and (max-width: 28em) {
+  .card-header-bg {
+    flex-wrap: wrap;
+  }
+}
+
 .card-footer {
   margin-top: 1rem;
   padding-bottom: 1rem;

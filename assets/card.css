@@ -82,7 +82,7 @@
 }
 @media screen and (min-width: 38em) {
   .card-channel-link {
-    display: inline-flex;
+    display: flex;
     min-width: 15em;
     flex-shrink: 0;
   }

@@ -195,7 +195,7 @@ p.redacted {
 p.unredacted {
   margin-bottom: 1em;
 }
-p.secret {
+p.secret, span.secret {
   opacity: 0.001;
   font-size: 1px;
   margin: 0;

@@ -198,4 +198,11 @@ p.unredacted {
 p.secret {
   opacity: 0.001;
   font-size: 1px;
+  margin: 0;
+  padding: 0;
+  line-height: 1px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }

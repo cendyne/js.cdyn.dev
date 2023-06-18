@@ -211,6 +211,7 @@ video {
   max-height: 90vh;
   width: auto;
   height: auto;
+  object-fit: contain;
 }
 
 video {

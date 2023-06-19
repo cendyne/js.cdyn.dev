@@ -21,7 +21,7 @@ body {
     --cendyne-trim: #deb836;
     --cendyne-eyes: #4cabc7;
     --cendyne-eyes-light: #66D9EF;
-    --ignorable-color: #8C8C8C;
+    --ignorable-color: #ACACAC;
     --cendyne-hide-half: rgba(46, 30, 23, 0.8);
     background: var(--cendyne-hide);
     color: var(--cendyne-belly);

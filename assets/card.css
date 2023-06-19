@@ -160,7 +160,7 @@ a.card-header-link {
     background-color: transparent;
     border: solid 1px black;
   }
-  .card-header-bg2 {
+  .card-header-bg, .card-header-bg2, .card-header-bg3 {
     visibility: hidden;
   }
   .card-header-content {

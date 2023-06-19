@@ -180,11 +180,11 @@
       let width = rect.width;
       let height = rect.width / 16 * 9;
       let sWidth = img.dataset['width'];
-      if (sWidth.match(numRegex)) {
+      if (sWidth && sWidth.match(numRegex)) {
         width = Number.parseInt(sWidth);
       }
       let sHeight = img.dataset['height'];
-      if (sHeight.match(numRegex)) {
+      if (sHeight && sHeight.match(numRegex)) {
         height = Number.parseInt(sHeight);
       }
       const w = Math.min(width, rect.width);

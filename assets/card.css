@@ -140,3 +140,15 @@ a.card-header-link {
   width: 100%;
   object-fit: cover;
 }
+@media print {
+  .card {
+    background-color: transparent;
+    border: solid 1px black;
+  }
+  .card-header-bg2 {
+    visibility: hidden;
+  }
+  .card-header-content {
+    border: solid 1px black;
+  }
+}

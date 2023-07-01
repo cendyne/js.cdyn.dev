@@ -125,13 +125,6 @@ blockquote .note {
 
 .hero img {
   object-fit: cover;
-  left: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  max-width: 100vw;
-  position: absolute;
-  right: 50%;
-  width: 100vw;
   max-height: 20em;
 }
 

@@ -66,10 +66,6 @@
   color: var(--ignorable-color);
 }
 
-code.hljs {
-  padding: 3px 5px
-}
-
 .hljs ::selection,
 .hljs::selection {
   background-color: var(--ignorable-color);

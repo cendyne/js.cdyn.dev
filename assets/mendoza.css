@@ -82,7 +82,7 @@
 .hljs-operator,
 .hljs-punctuation,
 .hljs-subst {
-  color: var(--cendyne-hide-lighter);
+  color: var(--cendyne-belly);
 }
 
 .hljs-operator {

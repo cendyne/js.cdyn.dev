@@ -159,7 +159,7 @@ code.hljs {
 .hljs-meta,
 .hljs-meta .hljs-keyword,
 .hljs-meta .hljs-string {
-  color: var(--cendyne-belly);
+  color: var(--cendyne-trim);
 }
 
 .hljs-meta .hljs-keyword,

@@ -260,25 +260,25 @@ blockquote:first-child {
 }
 
 @media screen and (max-width: 49em) {
-  *>ul,
+  /**>ul,
   *>ol {
+    padding-inline-start: 1em;
     margin-inline-start: 0;
     margin-inline-end: 0;
-    padding-inline-start: 1em;
     margin-block-start: 0;
-    margin-block-end: 0;
-  }
+    margin-block-end: 0; 
+  }*/
 }
 
 @media screen and (min-width: 49.01em) {
-  *>ul,
+  /**>ul,
   *>ol {
     padding-inline-start: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
     margin-block-start: 0;
     margin-block-end: 0;
-  }
+  }*/
 
   * blockquote {
     margin-inline-start: -1em;

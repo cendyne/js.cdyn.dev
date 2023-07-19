@@ -109,6 +109,9 @@ h3 {
 }
 
 @media print {
+  ::-webkit-scrollbar {
+      display: none;
+  }
   a,
   a:visited {
     color: blue;

@@ -150,7 +150,7 @@ blockquote .note {
 @media print {
   .site-header,
   .site-footer {
-    display: none;
+    display: none!important;
   }
 }
 

@@ -165,6 +165,6 @@ a.card-header-link {
   }
   .card-header-content {
     border: solid 1px black;
-    background-color: transparent;
+    background-color: transparent!important;
   }
 }

@@ -203,8 +203,10 @@
           loaded = true;
           // Remove temporary styling.
           if (addStyle) {
-            event.target.style.height = null;
-            event.target.style.width = null;
+            requestAnimationFrame(() => {
+              img.style.height = null;
+              img.style.width = null;
+            });
           }
         }
       })

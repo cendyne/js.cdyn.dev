@@ -189,12 +189,12 @@
       }
       const w = Math.min(width, rect.width);
       let addStyle = img.dataset['noStyle'] === undefined;
+      if (img.complete) {
+        continue;
+      }
       if (addStyle) {
         img.style.height = `${height / (width / w)}px`
         img.style.width = `${w}px`;
-      }
-      if (img.complete) {
-        continue;
       }
       var loaded = false;
       var blurhashApplied = false;

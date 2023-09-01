@@ -1,7 +1,7 @@
 #table-of-contents-container {
   margin-top: 1em;
 }
-@media screen and (min-width: 49.01em) {
+@media screen and (min-width: 83em) {
   #table-of-contents-container {
     display: block;
     top: 4em;

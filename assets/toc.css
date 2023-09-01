@@ -17,6 +17,6 @@
     border: solid 1px var(--cendyne-hide-dark);
     padding: 1em;
     max-height: calc(100vh - 6em);
-    overflow: scroll;
+    overflow: auto;
   }
 }

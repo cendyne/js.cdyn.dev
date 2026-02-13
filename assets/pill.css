@@ -1,0 +1,22 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.1em 0.6em;
+  border-radius: 9999px;
+  border: 1px solid #b0b0b0;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.85em;
+  line-height: 1.2;
+  vertical-align: baseline;
+}
+
+.pill--blue    { background: #dbeafe; color: #1e3a5f; border-color: #93c5fd; }
+.pill--green   { background: #dcfce7; color: #14532d; border-color: #86efac; }
+.pill--red     { background: #fee2e2; color: #7f1d1d; border-color: #fca5a5; }
+.pill--yellow  { background: #fef9c3; color: #713f12; border-color: #fde047; }
+.pill--purple  { background: #f3e8ff; color: #3b0764; border-color: #d8b4fe; }
+.pill--gray    { background: #f3f4f6; color: #374151; border-color: #d1d5db; }
+.pill--teal    { background: #ccfbf1; color: #134e4a; border-color: #5eead4; }
+.pill--orange  { background: #ffedd5; color: #7c2d12; border-color: #fdba74; }

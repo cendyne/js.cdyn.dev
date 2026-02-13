@@ -1,0 +1,41 @@
+.code-group {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.code-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.code-group-tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.code-group-tab {
+  background: transparent;
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.code-group-tab[aria-selected="true"] {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.code-group-panels .mendoza-codeblock {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.code-group [role="tabpanel"][hidden] { display: none; }

@@ -5,6 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Minify
         uses: ./minify-action
         with:
@@ -13,10 +17,10 @@ jobs:
         working-directory: 'cf/src'
         run: 'bash ../../.github/version.sh'
       - name: Deploy Production
-        uses: cloudflare/wrangler-action@2.0.0
+        uses: cloudflare/wrangler-action@v3
         with:
           preCommands: npm install
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: publish
+          command: deploy
           workingDirectory: cf

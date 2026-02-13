@@ -38,4 +38,9 @@
   border-radius: 0;
 }
 
+.code-group-actions {
+  display: flex;
+  align-items: center;
+}
+
 .code-group [role="tabpanel"][hidden] { display: none; }

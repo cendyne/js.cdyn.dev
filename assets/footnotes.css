@@ -1,0 +1,20 @@
+.footnotes {
+  border-top: 1px solid var(--cendyne-hide-light);
+  margin-top: 2em;
+  padding-top: 0.5em;
+  font-size: 0.9em;
+}
+.footnotes-label {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ignorable-color);
+  margin-bottom: 0.5em;
+}
+.footnote-ref a {
+  text-decoration: none;
+}
+.footnote-backref {
+  text-decoration: none;
+  margin-left: 0.25em;
+}

@@ -33,11 +33,31 @@
 
 .admonition-inline {
   display: inline;
-  border-left: none;
   padding: 0.1em 0.4em;
   margin: 0;
   border-radius: 4px;
+  border-bottom: 2px solid var(--cendyne-trim);
   font-style: italic;
+}
+
+.admonition-inline.admonition--note {
+  border-bottom-color: #448aff;
+}
+
+.admonition-inline.admonition--tip {
+  border-bottom-color: #00c853;
+}
+
+.admonition-inline.admonition--info {
+  border-bottom-color: #00b0ff;
+}
+
+.admonition-inline.admonition--warning {
+  border-bottom-color: #ff9100;
+}
+
+.admonition-inline.admonition--danger {
+  border-bottom-color: #ff1744;
 }
 
 .admonition details > summary {
